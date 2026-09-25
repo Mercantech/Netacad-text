@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Netacad Text Select</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --on: #22c55e;
+        --off: #64748b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 260px;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: linear-gradient(160deg, #0f172a 0%, #1e3a5f 100%);
+        color: var(--text);
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 0 0 14px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px;
+        background: var(--surface);
+        border-radius: 10px;
+      }
+
+      .label {
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .status {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      .toggle {
+        position: relative;
+        width: 44px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        background: var(--off);
+        border-radius: 999px;
+        transition: background 0.2s ease;
+      }
+
+      .slider::before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        left: 3px;
+        top: 3px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.2s ease;
+      }
+
+      input:checked + .slider {
+        background: var(--on);
+      }
+
+      input:checked + .slider::before {
+        transform: translateX(20px);
+      }
+
+      .hint {
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Netacad Text Select</h1>
+      <p>Tillad markering og kopiering af tekst på NetAcad.</p>
+
+      <div class="row">
+        <div>
+          <div class="label">Tekstmarkering</div>
+          <div class="status" id="statusText">Aktiveret</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="toggle" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <p class="hint">Genindlæs siden, hvis markering stadig er blokeret.</p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

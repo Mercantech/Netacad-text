@@ -1,0 +1,15 @@
+/* Fallback for light DOM. Shadow DOM styles are injected by content.js / page.js */
+html:not(.netacad-text-select-off),
+html:not(.netacad-text-select-off) body,
+html:not(.netacad-text-select-off) body *,
+html:not(.netacad-text-select-off) .component__body,
+html:not(.netacad-text-select-off) .text__body,
+html:not(.netacad-text-select-off) .component__body-inner,
+html:not(.netacad-text-select-off) .text__body-inner,
+html:not(.netacad-text-select-off) p {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}

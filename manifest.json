@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Netacad Text Select",
+  "version": "1.2.1",
+  "description": "Gør det muligt at markere og kopiere tekst på Cisco NetAcad / Skills for All.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Netacad Text Select",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "*://*.netacad.com/*",
+    "*://netacad.com/*",
+    "*://*.skillsforall.com/*",
+    "*://skillsforall.com/*",
+    "*://*.cisco.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.netacad.com/*",
+        "*://netacad.com/*",
+        "*://*.skillsforall.com/*",
+        "*://skillsforall.com/*",
+        "*://*.cisco.com/*"
+      ],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://*.netacad.com/*",
+        "*://netacad.com/*",
+        "*://*.skillsforall.com/*",
+        "*://skillsforall.com/*",
+        "*://*.cisco.com/*"
+      ],
+      "js": ["page.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    }
+  ]
+}
